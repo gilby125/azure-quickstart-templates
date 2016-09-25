@@ -39,6 +39,7 @@
       "type": "string",
       "defaultValue": "16.04.0-LTS",
       "allowedValues": [
+	"16.04.0-LTS",	      
         "12.04.5-LTS",
         "14.04.2-LTS",
         "15.10"
