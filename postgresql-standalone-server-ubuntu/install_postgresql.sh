@@ -3,17 +3,17 @@ sudo apt-get update
 #install the necessary tools 
 sudo apt-get install gcc make libreadline6-dev zlib1g-dev -y
 #download postgresql source code
-wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /tmp 2>/dev/null
+wget  http://ftp.postgresql.org/pub/source/v9.5.4//postgresql-9.5.4.tar.bz2 -P /tmp 2>/dev/null
 cd /tmp
-tar jxvf postgresql-9.3.5.tar.bz2
-cd postgresql-9.3.5
+tar jxvf postgresql-9.5.4.tar.bz2
+cd postgresql-9.5.4
 
 #install postgresql
-./configure --prefix=/opt/postgresql-9.3.5
+./configure --prefix=/opt/postgresql-9.5.4
 sudo make install-world 2> /dev/null
 
 #create postgres user for postgresql
-sudo ln -s /opt/postgresql-9.3.5 /opt/pgsql
+sudo ln -s /opt/postgresql-9.5.4 /opt/pgsql
 sudo mkdir -p /opt/pgsql_data
 sudo useradd -m postgres
 sudo chown -R postgres.postgres /opt/pgsql_data
@@ -45,7 +45,7 @@ sudo su - postgres -s /bin/bash /tmp/postgres.sh
 #instead we can use sudo su - postgres -c "initdb -D \$PGDATA -E UTF8 --locale=C -U postgres"
 
 #postgresql configuration
-cd /tmp/postgresql-9.3.5/contrib/start-scripts
+cd /tmp/postgresql-9.5.4/contrib/start-scripts
 sudo cp linux /etc/init.d/postgresql
 sudo sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 sudo sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
